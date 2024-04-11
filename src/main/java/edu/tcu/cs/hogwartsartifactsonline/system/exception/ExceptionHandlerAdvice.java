@@ -24,6 +24,12 @@ public class ExceptionHandlerAdvice {
         return new Result(false, StatusCode.NOT_FOUND, ex.getMessage());
     }
 
+    /**
+     * This handles invalid inputs.
+     *
+     * @param ex
+     * @return
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     Result handleValidationException(MethodArgumentNotValidException ex) {
@@ -32,8 +38,9 @@ public class ExceptionHandlerAdvice {
         errors.forEach((error) -> {
             String key = ((FieldError) error).getField();
             String val = error.getDefaultMessage();
-            map.put(key,val);
+            map.put(key, val);
         });
         return new Result(false, StatusCode.INVALID_ARGUMENT, "Provided arguments are invalid, see data for details.", map);
     }
+
 }

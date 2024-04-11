@@ -3,7 +3,6 @@ package edu.tcu.cs.hogwartsartifactsonline.artifact;
 import edu.tcu.cs.hogwartsartifactsonline.wizard.Wizard;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 import java.io.Serializable;
@@ -22,6 +21,7 @@ public class Artifact implements Serializable {
 
     @ManyToOne
     private Wizard owner;
+
 
     public Artifact() {
     }
@@ -54,7 +54,7 @@ public class Artifact implements Serializable {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl){
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
@@ -65,4 +65,5 @@ public class Artifact implements Serializable {
     public void setOwner(Wizard owner) {
         this.owner = owner;
     }
+
 }

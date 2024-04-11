@@ -1,4 +1,3 @@
-
 package edu.tcu.cs.hogwartsartifactsonline.system;
 
 /**
