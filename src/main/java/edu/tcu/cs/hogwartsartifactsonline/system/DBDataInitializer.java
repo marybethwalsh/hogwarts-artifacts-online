@@ -1,4 +1,4 @@
-package edu.tcu.cs.hogwartsartifactsonline.system;
+package edu.tcu.cs.hogwartsartifactsonline.system.exception;
 
 import edu.tcu.cs.hogwartsartifactsonline.artifact.Artifact;
 import edu.tcu.cs.hogwartsartifactsonline.artifact.ArtifactRepository;
@@ -14,12 +14,10 @@ public class DBDataInitializer implements CommandLineRunner {
 
     private final WizardRepository wizardRepository;
 
-
-    public DBDataInitializer(ArtifactRepository artifactRepository, WizardRepository wizardRepository) {
+    public DBDataInitializer(ArtifactRepository artifactRepository, WizardRepository wizardRepository){
         this.artifactRepository = artifactRepository;
         this.wizardRepository = wizardRepository;
     }
-
     @Override
     public void run(String... args) throws Exception {
         Artifact a1 = new Artifact();
@@ -45,6 +43,7 @@ public class DBDataInitializer implements CommandLineRunner {
         a4.setName("The Marauder's Map");
         a4.setDescription("A magical map of Hogwarts created by Remus Lupin, Peter Pettigrew, Sirius Black, and James Potter while they were students at Hogwarts.");
         a4.setImageUrl("ImageUrl");
+
 
         Artifact a5 = new Artifact();
         a5.setId("1250808601744904195");
@@ -81,5 +80,4 @@ public class DBDataInitializer implements CommandLineRunner {
 
         artifactRepository.save(a6);
     }
-
 }
