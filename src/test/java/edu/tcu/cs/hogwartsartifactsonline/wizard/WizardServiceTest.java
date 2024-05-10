@@ -3,7 +3,6 @@ package edu.tcu.cs.hogwartsartifactsonline.wizard;
 import edu.tcu.cs.hogwartsartifactsonline.artifact.Artifact;
 import edu.tcu.cs.hogwartsartifactsonline.artifact.ArtifactRepository;
 import edu.tcu.cs.hogwartsartifactsonline.system.exception.ObjectNotFoundException;
-//import edu.tcu.cs.hogwartsartifactsonline.system.exception.WizardNotFound;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -162,7 +161,7 @@ class WizardServiceTest {
         given(this.wizardRepository.findById(1)).willReturn(Optional.empty());
 
         // When
-        assertThrows(WizardNotFoundException.class, () -> {
+        assertThrows(ObjectNotFoundException.class, () -> {
             this.wizardService.update(1, update);
         });
 
@@ -193,7 +192,7 @@ class WizardServiceTest {
         given(this.wizardRepository.findById(1)).willReturn(Optional.empty());
 
         // When
-        assertThrows(WizardNotFoundException.class, () -> {
+        assertThrows(ObjectNotFoundException.class, () -> {
             this.wizardService.delete(1);
         });
 
@@ -201,7 +200,7 @@ class WizardServiceTest {
         verify(this.wizardRepository, times(1)).findById(1);
     }
 
-    /*@Test
+    @Test
     void testAssignArtifactSuccess() {
         // Given
         Artifact a = new Artifact();
@@ -248,13 +247,13 @@ class WizardServiceTest {
         given(this.wizardRepository.findById(3)).willReturn(Optional.empty());
 
         // When
-        Throwable thrown = assertThrows(WizardNotFoundException.class, () -> {
+        Throwable thrown = assertThrows(ObjectNotFoundException.class, () -> {
             this.wizardService.assignArtifact(3, "1250808601744904192");
         });
 
         // Then
         assertThat(thrown)
-                .isInstanceOf(WizardNotFoundException.class)
+                .isInstanceOf(ObjectNotFoundException.class)
                 .hasMessage("Could not find wizard with Id 3 :(");
         assertThat(a.getOwner().getId()).isEqualTo(2);
     }
@@ -265,14 +264,14 @@ class WizardServiceTest {
         given(this.artifactRepository.findById("1250808601744904192")).willReturn(Optional.empty());
 
         // When
-        Throwable thrown = assertThrows(WizardNotFoundException.class, () -> {
+        Throwable thrown = assertThrows(ObjectNotFoundException.class, () -> {
             this.wizardService.assignArtifact(3, "1250808601744904192");
         });
 
         // Then
         assertThat(thrown)
-                .isInstanceOf(WizardNotFoundException.class)
+                .isInstanceOf(ObjectNotFoundException.class)
                 .hasMessage("Could not find artifact with Id 1250808601744904192 :(");
-    }*/
+    }
 
 }

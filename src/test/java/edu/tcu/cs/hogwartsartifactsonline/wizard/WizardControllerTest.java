@@ -242,7 +242,7 @@ class WizardControllerTest {
                 .andExpect(jsonPath("$.data").isEmpty());
     }
 
-   /* @Test
+    @Test
     void testAssignArtifactSuccess() throws Exception {
         // Given
         doNothing().when(this.wizardService).assignArtifact(2, "1250808601744904191");
@@ -279,6 +279,6 @@ class WizardControllerTest {
                 .andExpect(jsonPath("$.code").value(StatusCode.NOT_FOUND))
                 .andExpect(jsonPath("$.message").value("Could not find artifact with Id 1250808601744904199 :("))
                 .andExpect(jsonPath("$.data").isEmpty());
-    }*/
+    }
 
 }
